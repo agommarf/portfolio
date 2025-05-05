@@ -1,0 +1,195 @@
+/* Reset and general styles */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #111;
+    color: #eee;
+}
+
+/* Navigation */
+nav {
+    background: #000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #e91e63;
+}
+
+/* Hero (reutilizado en Home y My Videos) */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: #222;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #e91e63;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Video section (Home) */
+.videos {
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Centrado horizontal */
+}
+
+.video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.video-card {
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: 360px;
+    background: #1e1e1e;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.video-card video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* ---- Estilos para My Videos ---- */
+
+/* Formulario de búsqueda */
+form {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 800px;            /* Ancho máximo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;         /* Centrar inputs y botón */
+}
+
+/* Etiquetas e inputs dentro del form */
+form label {
+    font-weight: bold;
+    color: #eee;
+    margin-bottom: 5px;
+    display: block;
+    width: 100%;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    color: #eee;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Botón de filtrado */
+form button {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    width: 100%;
+}
+
+form button:hover {
+    background: #d81b60;
+}
+
+/* Contenedor de filtros (alineación de los 3 campos) */
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.filter-group {
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+/* Lista de videos filtrados */
+.video-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;     /* Centrado horizontal */
+    width: 100%;
+}
+
+.video-item {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 360px;            /* Mismo ancho que video-card */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.video-item h3 {
+    margin: 10px 0;
+    color: #e91e63;
+}
+
+.video-item p {
+    margin: 10px 0;
+    color: #ccc;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .video-item {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-item {
+        max-width: 100%;
+    }
+}

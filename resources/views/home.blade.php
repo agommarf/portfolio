@@ -1,0 +1,29 @@
+@extends('layouts.app')
+
+@section('title', 'Home')
+
+@section('content')
+    <section class="hero">
+        <h1>oddTiwi</h1>
+        <p>Visual content creator: edits, memes, and short narratives.</p>
+        <a href="#portfolio" class="btn">See my creations</a>
+    </section>
+
+    <section id="portfolio" class="videos">
+        <h2>Latest works</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <video src="{{ asset('videos/JackConradBabylon.mp4') }}" controls></video>
+                <p>Video 1: Jack Conrad</p>
+            </div>
+            <div class="video-card">
+                <video src="{{ asset('videos/Experience.mp4') }}" controls></video>
+                <p>Video 2: Title or brief description</p>
+            </div>
+            <div class="video-card">
+                <video src="{{ asset('videos/Lavidabonitaylenta.mp4') }}" controls></video>
+                <p>Video 3: The slow, beautiful life</p>
+            </div>
+        </div>
+    </section>
+@endsection
