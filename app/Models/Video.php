@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    protected $fillable = ['title', 'file_path'];
+    protected $fillable = ['title', 'file_path', 'type'];
 
     public function actors()
     {
@@ -18,4 +18,3 @@ class Video extends Model
         return $this->belongsToMany(Category::class);
     }
 }
-

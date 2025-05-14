@@ -6,6 +6,7 @@ use App\Models\Video;
 use App\Models\Actor;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class VideoController extends Controller
 {
@@ -42,5 +43,26 @@ class VideoController extends Controller
 
         // Pasar las variables a la vista
         return view('my-videos', compact('videos', 'actors', 'categories'));
+    }
+
+    // Importa videos desde una carpeta
+    public function importVideosFromFolder()
+    {
+        $videoFiles = File::files(public_path('videos'));
+
+        foreach ($videoFiles as $file) {
+            $filename = $file->getFilename();
+
+            // Comprobar si ya existe en la base de datos para no duplicar
+            if (!Video::where('file_path', 'videos/' . $filename)->exists()) {
+                Video::create([
+                    'title' => pathinfo($filename, PATHINFO_FILENAME),
+                    'file_path' => 'videos/' . $filename,
+                    'type' => 'edit', // Cambia a 'meme' si lo prefieres
+                ]);
+            }
+        }
+
+        return redirect('/my-videos')->with('success', 'Videos importados correctamente.');
     }
 }

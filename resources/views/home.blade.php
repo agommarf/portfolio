@@ -13,16 +13,16 @@
         <h2>Latest works</h2>
         <div class="video-grid">
             <div class="video-card">
-                <video src="{{ asset('videos/JackConradBabylon.mp4') }}" controls></video>
-                <p>Video 1: Jack Conrad</p>
+                <video src="{{ asset('videos/') }}" controls></video>
+                <p>Video 1: </p>
             </div>
             <div class="video-card">
-                <video src="{{ asset('videos/Experience.mp4') }}" controls></video>
-                <p>Video 2: Title or brief description</p>
+                <video src="{{ asset('videos/') }}" controls></video>
+                <p>Video 2: </p>
             </div>
             <div class="video-card">
-                <video src="{{ asset('videos/Lavidabonitaylenta.mp4') }}" controls></video>
-                <p>Video 3: The slow, beautiful life</p>
+                <video src="{{ asset('videos/4') }}" controls></video>
+                <p>Video 3: </p>
             </div>
         </div>
     </section>

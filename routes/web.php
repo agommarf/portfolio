@@ -20,3 +20,6 @@ Route::get('/my-videos', [VideoController::class, 'index']);
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Route::get('/import-videos', [VideoController::class, 'importVideosFromFolder']);
+

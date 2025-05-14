@@ -13,4 +13,3 @@ class Actor extends Model
         return $this->belongsToMany(Video::class);
     }
 }
-

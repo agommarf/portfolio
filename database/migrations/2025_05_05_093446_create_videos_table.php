@@ -13,8 +13,7 @@ class CreateVideosTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('file_path');
-            $table->boolean('is_edit')->default(false);
-            $table->boolean('is_meme')->default(false);
+            $table->enum('type', ['edit', 'meme'])->default('edit');
             $table->timestamps();
         });
     }

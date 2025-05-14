@@ -13,6 +13,7 @@ class CreateActorVideoTable extends Migration
             $table->foreignId('actor_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_id')->constrained()->onDelete('cascade');
             $table->primary(['actor_id', 'video_id']);
+            $table->timestamps();
         });
     }
 

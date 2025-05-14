@@ -13,6 +13,7 @@ class CreateCategoryVideoTable extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('video_id')->constrained()->onDelete('cascade');
             $table->primary(['category_id', 'video_id']);
+            $table->timestamps();
         });
     }
 
