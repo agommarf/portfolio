@@ -13,12 +13,14 @@
         <div class="filter-container">
             <div class="filter-group">
                 <label for="search_movie">Buscar por Película o Serie:</label>
-                <input type="text" id="search_movie" name="search_movie" placeholder="Buscar por Película o Serie" value="{{ request('search_movie') }}">
+                <input type="text" id="search_movie" name="search_movie" placeholder="Buscar por Película o Serie"
+                    value="{{ request('search_movie') }}">
             </div>
 
             <div class="filter-group">
                 <label for="search_actor">Buscar por Actor:</label>
-                <input type="text" id="search_actor" name="search_actor" placeholder="Buscar por Actor" value="{{ request('search_actor') }}">
+                <input type="text" id="search_actor" name="search_actor" placeholder="Buscar por Actor"
+                    value="{{ request('search_actor') }}">
             </div>
 
             <div class="filter-group">
@@ -38,14 +40,18 @@
     <section id="portfolio" class="videos">
         <h2>Mis Creaciones</h2>
         <div class="video-grid">
-            @if($videos->isEmpty())
+            @if ($videos->isEmpty())
                 <p>No se encontraron videos.</p>
             @else
-                @foreach($videos as $video)
-                    <div class="video-card">
-                        <video src="{{ asset($video->file_path) }}" controls></video>
-                        <p>{{ $video->custom_title ?? 'Título personal' }}</p>
-                    </div>
+                @foreach ($videos as $video)
+                    @if (!empty($video->vimeo_url))
+                        <div class="video-card">
+                            <iframe src="{{ $video->vimeo_url }}" width="100%" height="360" frameborder="0"
+                                allow="autoplay; fullscreen" allowfullscreen>
+                            </iframe>
+                            <p>{{ $video->custom_title ?? 'Título personal' }}</p>
+                        </div>
+                    @endif
                 @endforeach
             @endif
         </div>
