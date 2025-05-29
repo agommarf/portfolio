@@ -12,7 +12,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('file_path');
+            $table->string('vimeo_url'); // Columna para almacenar la URL de Vimeo
             $table->enum('type', ['edit', 'meme'])->default('edit');
             $table->timestamps();
         });
