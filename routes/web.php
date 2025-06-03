@@ -17,11 +17,8 @@ Route::get('/', function () {
 Route::get('/my-videos', [VideoController::class, 'index']);
 
 // Página de contacto
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
+Route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
 

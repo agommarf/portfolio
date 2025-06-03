@@ -23,7 +23,7 @@ class ContactController extends Controller
         ]);
 
         // 2) Envío: aquí DEFINES el destinatario con to()
-        Mail::to('tucorreo@gmail.com')              // <— tu email
+        Mail::to('joseluis@gmail.com')              // <— tu email
             ->send(new ContactMessage($data));
 
         return back()->with('success', '¡Mensaje enviado correctamente!');

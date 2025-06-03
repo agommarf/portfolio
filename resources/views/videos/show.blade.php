@@ -5,7 +5,7 @@
 @section('content')
     <section class="video-detail">
         <div class="video-player" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-            <iframe 
+            <iframe
                 src="{{ $video->vimeo_url }}?title=0&byline=0&portrait=0&muted=0" 
                 frameborder="0" allowfullscreen
                 style="position:absolute; top:0; left:0; width:100%; height:100%;">
