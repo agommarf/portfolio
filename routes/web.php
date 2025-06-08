@@ -33,3 +33,7 @@ Route::get('/search/categories', function (Request $request) {
     $q = $request->get('q');
     return Category::where('name', 'LIKE', "%$q%")->pluck('name');
 });
+
+Route::view('/legal', 'legal.terms')->name('terms');
+Route::view('/privacy', 'legal.privacy')->name('privacy');
+Route::view('/cookie', 'legal.cookie')->name('cookie');

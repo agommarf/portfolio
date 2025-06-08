@@ -21,10 +21,12 @@
                         <iframe src="{{ $video->vimeo_url }}&muted=1&background=1&autoplay=0" frameborder="0" allowfullscreen
                             class="video-iframe" data-vimeo-id="{{ $video->id }}"></iframe>
                         <div class="video-overlay">
-                            <span class="play-icon">▶</span>
-                            <h3>{{ $video->title }}</h3>
-                            <p class="video-meta">Actors: {{ $video->actors->pluck('name')->join(', ') }}</p>
-                            <p class="video-meta">Categories: {{ $video->categories->pluck('name')->join(', ') }}</p>
+                            <p class="video-meta">Actors: {{ $video->actors->take(3)->pluck('name')->join(', ') }}</p>
+                            <p class="video-meta">Movies or Series:
+                                {{ $video->categories->take(3)->pluck('name')->join(', ') }}</p>
+                            <p class="video-meta">
+                                <small>Views: {{ $video->view_count }}</small>
+                            </p>
                         </div>
                     </a>
                 </div>
@@ -34,24 +36,28 @@
         </div>
     </section>
 
+    <!-- Most Viewed (antes Favorites) -->
     <section class="videos">
-        <h2>Favorites</h2>
+        <h2>Most Viewed</h2>
         <div class="video-grid">
-            @forelse($favoriteVideos as $video)
+            @forelse($mostViewed as $video)
                 <div class="video-card">
                     <a href="{{ route('videos.show', $video->id) }}" class="video-preview">
                         <iframe src="{{ $video->vimeo_url }}&muted=1&background=1&autoplay=0" frameborder="0"
-                            allowfullscreen class="video-iframe" data-vimeo-id="{{ $video->id }}"></iframe>
+                            allowfullscreen class="video-iframe" data-vimeo-id="{{ $video->id }}">
+                        </iframe>
                         <div class="video-overlay">
-                            <span class="play-icon">▶</span>
-                            <h3>{{ $video->title }}</h3>
-                            <p class="video-meta">Actors: {{ $video->actors->pluck('name')->join(', ') }}</p>
-                            <p class="video-meta">Categories: {{ $video->categories->pluck('name')->join(', ') }}</p>
+                            <p class="video-meta">Actors: {{ $video->actors->take(3)->pluck('name')->join(', ') }}</p>
+                            <p class="video-meta">Movies or Series:
+                                {{ $video->categories->take(3)->pluck('name')->join(', ') }}</p>
+                            <p class="video-meta">
+                                <small>Views: {{ $video->view_count }}</small>
+                            </p>
                         </div>
                     </a>
                 </div>
             @empty
-                <p>No favorite videos available.</p>
+                <p>There are no popular videos yet.</p>
             @endforelse
         </div>
     </section>
@@ -105,6 +111,23 @@
             <a href="{{ url('/contact') }}" class="btn-cta">Get in Touch</a>
         </div>
 
+    </section>
+
+    <section class="donation-section">
+        <div class="donation-container">
+            <h2 class="donation-title">Support My Work</h2>
+            <p class="donation-text">
+                If you enjoy my edits and memes, you can buy me a coffee!
+            </p>
+            <a
+                href="https://coff.ee/oddtiwi"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="donate-button"
+            >
+                Buy Me a Coffee
+            </a>
+        </div>
     </section>
 
     <script>

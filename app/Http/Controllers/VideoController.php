@@ -46,7 +46,15 @@ class VideoController extends Controller
     // Muestra un video individual
     public function show($id)
     {
+        // 1) Recuperamos el video (con relaciones si quieres)
         $video = Video::with(['categories', 'actors'])->findOrFail($id);
+
+        // 2) Incrementamos en 1 el contador de reproducciones
+        //    Esto asume que cada vez que entra a esta ruta "ver video",
+        //    contabilizamos una reproducción.
+        $video->increment('view_count');
+
+        // 3) Devolvemos la vista
         return view('videos.show', compact('video'));
     }
 }

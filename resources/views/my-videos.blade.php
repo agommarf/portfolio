@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Mis Videos')
+@section('title', 'Videos')
 
 @section('content')
 
@@ -8,35 +8,34 @@
     <form method="GET" action="{{ url('/my-videos') }}">
         <div class="filter-container">
             <div class="filter-group">
-                <label for="search_movie">Buscar por Película o Serie:</label>
-                <input type="text" id="search_movie" name="search_movie" placeholder="Buscar por Película o Serie"
+                <label for="search_movie">Search by Movie or Series:</label>
+                <input type="text" id="search_movie" name="search_movie" placeholder="Search by Movie or Series:"
                     value="{{ request('search_movie') }}" autocomplete="off">
                 <ul id="movieSuggestions" class="autocomplete-results"></ul>
             </div>
 
             <div class="filter-group">
-                <label for="search_actor">Buscar por Actor:</label>
-                <input type="text" id="search_actor" name="search_actor" placeholder="Buscar por Actor"
+                <label for="search_actor">Search by Actor:</label>
+                <input type="text" id="search_actor" name="search_actor" placeholder="Search by Actor:"
                     value="{{ request('search_actor') }}" autocomplete="off">
                 <ul id="actorSuggestions" class="autocomplete-results"></ul>
             </div>
 
             <div class="filter-group">
-                <label for="search_type">Filtrar por Tipo (Edit o Meme):</label>
+                <label for="search_type">Filter by Type (Edit or Meme):</label>
                 <select id="search_type" name="search_type">
-                    <option value="">Todos</option>
+                    <option value="">All</option>
                     <option value="Edit" {{ request('search_type') == 'Edit' ? 'selected' : '' }}>Edit</option>
                     <option value="Meme" {{ request('search_type') == 'Meme' ? 'selected' : '' }}>Meme</option>
                 </select>
             </div>
         </div>
 
-        <button type="submit">Filtrar</button>
+        <button type="submit">Search</button>
     </form>
 
     <!-- Mostrar los videos filtrados -->
     <section id="portfolio" class="videos">
-        <h2>Mis Creaciones</h2>
         <div class="video-grid">
             @if ($videos->isEmpty())
                 <p>No se encontraron videos.</p>
@@ -48,10 +47,10 @@
                                 <iframe src="{{ $video->vimeo_url }}&muted=1&background=1&autoplay=0" frameborder="0"
                                     allowfullscreen class="video-iframe" data-vimeo-id="{{ $video->id }}"></iframe>
                                 <div class="video-overlay">
-                                    <span class="play-icon">▶</span>
-                                    <h3>{{ $video->title }}</h3>
-                                    <p class="video-meta">Actores: {{ $video->actors->pluck('name')->join(', ') }}</p>
-                                    <p class="video-meta">Categorías: {{ $video->categories->pluck('name')->join(', ') }}
+                                    <p class="video-meta">Actors: {{ $video->actors->take(3)->pluck('name')->join(', ') }}</p>
+                                    <p class="video-meta">Movies or Series: {{ $video->categories->take(3)->pluck('name')->join(', ') }}</p>
+                                    <p class="video-meta">
+                                        <small>Views: {{ $video->view_count }}</small>
                                     </p>
                                 </div>
                             </a>

@@ -58,17 +58,21 @@ body {
   overflow-x: hidden;
 }
 
-.header-wrapper {
-  background: rgba(18, 18, 18, 0.95);
+.header-background {
   /* Fondo oscuro semi-transparente */
+  background: rgba(18, 18, 18, 0.95);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  /* Sombra suave */
+}
+
+.header-wrapper {
+  max-width: 1200px;
+  /* max-width: 1200px; mismo que el contenido principal */
   transition: background 0.3s ease;
   /* Cambio suave de fondo */
-  max-width: 1200px; /* mismo que el contenido principal */
   margin: 0 auto;
   padding: 0 1rem;
 }
+
 /* Barra de navegación superior */
 nav {
   padding: var(--spacing-sm) var(--spacing-md);
@@ -77,6 +81,7 @@ nav {
   /* Fija la barra arriba */
   z-index: 100;
 }
+
 nav h1 {
   font-size: 3rem;
   /* Título grande */
@@ -106,6 +111,7 @@ nav h1 {
   /* Iconos en fila */
   gap: var(--spacing-sm);
   /* Espacio entre iconos */
+  padding: var(--spacing-xs) var(--spacing-md);
 }
 
 .social-icons a {
@@ -455,6 +461,75 @@ nav h1 {
   /* Crece un poco */
 }
 
+/* -----------------------------------
+   Sección de Donaciones (Home)
+----------------------------------- */
+.donation-section {
+  width: 100vw; /* ocupa todo el ancho visible */
+  padding: var(--spacing-xxl) var(--spacing-md); /* espacio arriba/abajo y laterales */
+  text-align: center;
+  margin-top: var(--spacing-xxl);
+}
+
+.donation-container {
+  max-width: 75rem;     /* coincide con el ancho de tus otras secciones */
+  margin: 0 auto;       /* centra horizontalmente */
+  padding: 0 var(--spacing-md);
+  background: var(--color-bg-card);
+  /* Fondo de tarjeta */
+  border-radius: 0.75rem;
+  /* Bordes redondeados */
+  padding: 1.5rem;
+  /* Espacio interno */
+  flex: 1 1 calc(33% - 1.5rem);
+  /* Tamaño flexible */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  /* Sombra */
+}
+
+.donation-title {
+  font-size: 2rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-family);
+  font-weight: 700;
+}
+
+.donation-text {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
+}
+
+/* Reutilizamos la clase .btn-cta para mantener coherencia visual */
+.donate-button {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-lg);
+  background: linear-gradient(
+    45deg,
+    var(--color-accent-gradient-start),
+    var(--color-accent-gradient-end)
+  );
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-family);
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.donate-button:hover {
+  background: linear-gradient(
+    45deg,
+    var(--color-accent-gradient-end),
+    var(--color-accent-gradient-start)
+  );
+  transform: scale(1.05);
+}
+
 /* Sección de videos */
 .videos {
   padding: var(--spacing-xs) var(--spacing-md);
@@ -576,6 +651,8 @@ nav h1 {
   /* Aparece suavemente */
   padding: var(--spacing-xs);
   /* Espacio interno */
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .video-preview:hover .video-overlay {
@@ -913,14 +990,8 @@ form button:hover {
 }
 
 .video-player iframe {
-  width: 100%;
-  /* Ancho completo */
-  height: 31.25rem;
-  /* Altura fija */
-  border-radius: 1rem;
-  /* Bordes redondeados */
-  border: none;
-  /* Sin borde */
+  background: var(--color-bg-alt);
+  border-radius: 0.75rem;
 }
 
 .video-info {
@@ -1008,16 +1079,9 @@ form button:hover {
   /* Ancho máximo */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   /* Sombra */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Efectos suaves */
 }
 
-.tmdb-card:hover {
-  transform: translateY(-5px);
-  /* Sube un poco */
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
-  /* Sombra más grande */
-}
+
 
 .tmdb-poster {
   width: 100%;
@@ -1552,4 +1616,5 @@ footer .social-links a:hover {
     gap: 1rem;
     /* Espacio menor */
   }
+  
 }

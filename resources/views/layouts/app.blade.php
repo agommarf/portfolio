@@ -12,41 +12,43 @@
 </head>
 
 <body>
-    <header class="header-wrapper">
-        <nav>
-            <div class="header-top">
-                <div class="social-icons">
-                    <a href="https://twitter.com/oddtiwi" target="_blank" rel="noopener noreferrer" aria-label="X">
-                        <i class="fab fa-twitter"></i>
+    <div class="header-background">
+        <header class="header-wrapper">
+            <nav>
+                <div class="header-top">
+                    <div class="social-icons">
+                        <a href="https://twitter.com/oddtiwi" target="_blank" rel="noopener noreferrer" aria-label="X">
+                            <i class="fab fa-twitter" style="font-size:2rem;"></i>
+                        </a>
+                        <a href="https://instagram.com/oddtiwi_" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <i class="fab fa-instagram" style="font-size:2rem;"></i>
+                        </a>
+                    </div>
+                    <a style="text-decoration: none; color: #f0f0f0" href="{{ url('/') }}">
+                        <h1>oddTiwi</h1>
                     </a>
-                    <a href="https://instagram.com/oddtiwi_" target="_blank" rel="noopener noreferrer"
-                        aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                    <div class="contact-button">
+                        <a href="{{ url('/contact') }}" class="btn">Contact Me</a>
+                    </div>
                 </div>
-                <a style="text-decoration: none; color: #f0f0f0" href="{{ url('/') }}">
-                    <h1>oddTiwi</h1>
-                </a>
-                <div class="contact-button">
-                    <a href="{{ url('/contact') }}" class="btn">Contact Me</a>
+                <div class="main-nav">
+                    <ul>
+                        <li><a href="{{ url('/') }}">Home</a></li>
+                        <li><a href="{{ url('/my-videos') }}">Videos</a></li>
+                        <li><a href="{{ url('/contact') }}">Contact</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="main-nav">
-                <ul>
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('/my-videos') }}">My Videos</a></li>
-                    <li><a href="{{ url('/contact') }}">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
+    </div>
     @yield('content')
     <footer>
         <p>© 2025 oddTiwi. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://vimeo.com/user" target="_blank">Vimeo</a>
-            <a href="https://instagram.com/user" target="_blank">Instagram</a>
-            <a href="mailto:your@email.com">Email</a>
+            <a href="{{ route('terms') }}">Terms</a> |
+            <a href="{{ route('privacy') }}">Privacy Policy</a> |
+            <a href="{{ route('cookie') }}">Cookie Policy</a>
         </div>
     </footer>
 </body>
