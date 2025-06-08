@@ -9,52 +9,54 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
-    // Muestra todos los videos con la posibilidad de filtrarlos
+    // Muestra la lista de videos, con filtros opcionales para categoría, actor y tipo
     public function index(Request $request)
     {
+        // Traemos todos los actores y categorías para usarlos en filtros o dropdowns en la vista
         $actors = Actor::all();
         $categories = Category::all();
 
-        // Crear la consulta inicial
+        // Empezamos la consulta con las relaciones para evitar N+1 queries
         $query = Video::with(['actors', 'categories']);
 
-        // Filtrar por nombre de categoría (película o serie)
+        // Si nos pasan un filtro para categoría (película o serie), lo aplicamos
         if ($request->filled('search_movie')) {
             $query->whereHas('categories', function ($q) use ($request) {
+                // Busca coincidencias parciales en el nombre de la categoría
                 $q->where('name', 'like', '%' . $request->search_movie . '%');
             });
         }
 
-        // Filtrar por nombre de actor
+        // Si hay filtro por actor, filtramos por el nombre del actor
         if ($request->filled('search_actor')) {
             $query->whereHas('actors', function ($q) use ($request) {
+                // Igual, coincidencias parciales para el nombre del actor
                 $q->where('name', 'like', '%' . $request->search_actor . '%');
             });
         }
 
-        // Filtrar por tipo exacto (Edit o Meme)
+        // Filtramos por tipo exacto si viene (edit o meme), asegurándonos que esté en minúsculas
         if ($request->filled('search_type')) {
             $query->where('type', strtolower($request->search_type));
         }
 
-        // Obtener los resultados
+        // Ejecutamos la consulta y recogemos los resultados
         $videos = $query->get();
 
+        // Mandamos todo a la vista, incluyendo las listas para filtros
         return view('my-videos', compact('videos', 'actors', 'categories'));
     }
 
-    // Muestra un video individual
+    // Muestra la página de un video individual, incrementando su contador de vistas
     public function show($id)
     {
-        // 1) Recuperamos el video (con relaciones si quieres)
+        // Recuperamos el video con sus actores y categorías relacionados
         $video = Video::with(['categories', 'actors'])->findOrFail($id);
 
-        // 2) Incrementamos en 1 el contador de reproducciones
-        //    Esto asume que cada vez que entra a esta ruta "ver video",
-        //    contabilizamos una reproducción.
+        // Incrementamos el contador de vistas para llevar un control
         $video->increment('view_count');
 
-        // 3) Devolvemos la vista
+        // Devolvemos la vista con el video cargado
         return view('videos.show', compact('video'));
     }
 }

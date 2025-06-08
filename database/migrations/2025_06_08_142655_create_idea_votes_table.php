@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('idea_votes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idea_id')->constrained()->onDelete('cascade');
+            $table->string('session_id'); // Para limitar 1 voto por sesión
+            $table->integer('value'); // +1 o -1
             $table->timestamps();
+
+            $table->unique(['idea_id', 'session_id']); // Un voto por idea por sesión
         });
     }
 

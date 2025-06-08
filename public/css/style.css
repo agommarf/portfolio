@@ -56,6 +56,7 @@ body {
   scroll-behavior: smooth;
   /* Desplazamiento suave al hacer scroll */
   overflow-x: hidden;
+
 }
 
 .header-background {
@@ -465,15 +466,19 @@ nav h1 {
    Sección de Donaciones (Home)
 ----------------------------------- */
 .donation-section {
-  width: 100vw; /* ocupa todo el ancho visible */
-  padding: var(--spacing-xxl) var(--spacing-md); /* espacio arriba/abajo y laterales */
+  width: 100vw;
+  /* ocupa todo el ancho visible */
+  padding: var(--spacing-xxl) var(--spacing-md);
+  /* espacio arriba/abajo y laterales */
   text-align: center;
   margin-top: var(--spacing-xxl);
 }
 
 .donation-container {
-  max-width: 75rem;     /* coincide con el ancho de tus otras secciones */
-  margin: 0 auto;       /* centra horizontalmente */
+  max-width: 75rem;
+  /* coincide con el ancho de tus otras secciones */
+  margin: 0 auto;
+  /* centra horizontalmente */
   padding: 0 var(--spacing-md);
   background: var(--color-bg-card);
   /* Fondo de tarjeta */
@@ -506,11 +511,9 @@ nav h1 {
 .donate-button {
   display: inline-block;
   padding: var(--spacing-xs) var(--spacing-lg);
-  background: linear-gradient(
-    45deg,
-    var(--color-accent-gradient-start),
-    var(--color-accent-gradient-end)
-  );
+  background: linear-gradient(45deg,
+      var(--color-accent-gradient-start),
+      var(--color-accent-gradient-end));
   color: #1a1a1a;
   text-decoration: none;
   border-radius: 0.5rem;
@@ -522,11 +525,9 @@ nav h1 {
 }
 
 .donate-button:hover {
-  background: linear-gradient(
-    45deg,
-    var(--color-accent-gradient-end),
-    var(--color-accent-gradient-start)
-  );
+  background: linear-gradient(45deg,
+      var(--color-accent-gradient-end),
+      var(--color-accent-gradient-start));
   transform: scale(1.05);
 }
 
@@ -1382,6 +1383,57 @@ footer p {
   /* Texto apagado */
 }
 
+/* Lista vertical de ideas */
+.idea-list {
+  display: flex;
+  flex-direction: column;
+  /* separa cada tarjeta con ese gap */
+  gap: var(--spacing-lg);
+}
+
+.idea-item {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background: var(--color-bg-alt);
+  /* Fondo alternativo */
+  border-radius: 0.75rem;
+  /* Bordes redondeados */
+  padding: var(--spacing-sm);
+  /* Espacio interno */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  /* Sombra */
+}
+
+.idea-item h3 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 1.3rem;
+  /* Subtítulo */
+  margin: var(--spacing-xs) 0;
+  /* Espacio alrededor */
+  color: #ffffff;
+  /* Blanco */
+  font-family: var(--font-family);
+  /* Fuente principal */
+  font-weight: 600;
+  /* Negrita */
+  text-align: center;
+  /* Centrado */
+}
+
+.idea-item p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 1rem;
+  /* Tamaño del texto */
+  margin: 0;
+  /* Sin margen */
+  color: var(--color-text-muted);
+  /* Texto apagado */
+  text-align: center;
+  /* Centrado */
+}
+
 footer .social-links {
   margin-top: var(--spacing-xs);
   /* Espacio arriba */
@@ -1616,5 +1668,4 @@ footer .social-links a:hover {
     gap: 1rem;
     /* Espacio menor */
   }
-  
 }
